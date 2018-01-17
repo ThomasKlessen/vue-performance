@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>ListRendering</h1>
+    <main-header></main-header>
     <ul>
       <item
         v-for="item in items"
@@ -13,9 +13,11 @@
 
 <script>
 import Item from './item'
+import MainHeader from './MainHeader'
 
 export default {
   components: {
+    MainHeader,
     Item
   },
   name: 'ListRendering',

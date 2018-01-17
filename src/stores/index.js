@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import config from '../config'
 
 import item from './itemStore'
 import itemDetail from './itemDetailStore'
@@ -15,7 +16,7 @@ const store = new Vuex.Store({
 console.time('StoreInitData')
 const items = []
 const itemDetails = []
-for (let i = 0; i < 1000; i++) {
+for (let i = 0; i < config.itemCount; i++) {
   items.push({
     id: i,
     name: 'Item ' + i
