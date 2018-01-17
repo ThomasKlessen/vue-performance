@@ -4,12 +4,14 @@ import config from '../config'
 
 import item from './itemStore'
 import itemDetail from './itemDetailStore'
+import dummy from './dummyStore'
 Vue.use(Vuex)
 
 const store = new Vuex.Store({
   modules: {
     item,
-    itemDetail
+    itemDetail,
+    dummy
   }
 })
 
@@ -29,7 +31,16 @@ for (let i = 0; i < config.itemCount; i++) {
   })
 }
 
+const dummyItems = []
+for (let i = 0; i < config.dummyCount; i++) {
+  dummyItems.push({
+    id: i,
+    label: 'Dummy ' + i
+  })
+}
+
 store.commit('addItems', items)
 store.commit('addItemDetails', itemDetails)
+store.commit('addDummys', dummyItems)
 console.timeEnd('StoreInitData')
 export default store
