@@ -1,7 +1,11 @@
 <template>
   <div class="item">
     <h3>{{ item.name }}</h3>
-    <label>{{ getDetails }}</label>
+    <label>{{ detail.label }}</label>
+    <br/>
+    <label>{{ detail.count }}</label>
+    <button v-on:click="add"> + </button>
+    <button v-on:click="sub"> - </button>
   </div>
 </template>
 
@@ -15,8 +19,16 @@ export default {
     }
   },
   computed: {
-    getDetails () {
-      return this.$store.getters.itemDetailsbyItemId(this.item.id).label
+    detail () {
+      return this.$store.getters.itemDetailsbyItemId(this.item.id)
+    }
+  },
+  methods: {
+    add () {
+      this.detail.count++
+    },
+    sub () {
+      this.detail.count--
     }
   }
 }

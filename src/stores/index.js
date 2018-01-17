@@ -24,7 +24,8 @@ for (let i = 0; i < config.itemCount; i++) {
   itemDetails.push({
     id: i,
     itemId: i,
-    label: 'ItemDetail ' + i
+    label: 'ItemDetail ' + i,
+    count: 0
   })
 }
 

@@ -17,6 +17,11 @@ export default {
         }
         Vue.set(state.itemDetails, itemDetail.id, itemDetail)
       })
+    },
+    addOne (state) {
+      state.itemDetailList.forEach(itemId => {
+        state.itemDetails[itemId].count++
+      })
     }
   },
   getters: {

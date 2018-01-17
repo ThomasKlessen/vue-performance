@@ -1,7 +1,7 @@
 <template>
   <div>
     <label>Header</label>
-    <button v-on:click="clickMe">ClickTest</button>
+    <button v-on:click="clickMe"> + </button>
   </div>
 </template>
 
@@ -11,6 +11,7 @@ export default {
   methods: {
     clickMe () {
       console.log('Click')
+      this.$store.commit('addOne')
     }
   }
 }

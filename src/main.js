@@ -4,17 +4,17 @@ import Vue from 'vue'
 import PerformanceTest from './PerformanceTest'
 import router from './router'
 import store from './stores'
+import config from './config'
 
-Vue.config.productionTip = false
-console.time('All')
+Vue.config.devtools = config.VueConfig.devtools
+Vue.config.productionTip = config.VueConfig.productionTip
+Vue.config.performance = config.VueConfig.performance
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
   router,
   store,
-  mounted () {
-    console.timeEnd('All')
-  },
   components: { PerformanceTest },
   template: '<PerformanceTest/>'
 })
