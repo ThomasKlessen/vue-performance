@@ -12,6 +12,7 @@ const store = new Vuex.Store({
   }
 })
 
+console.time('StoreInitData')
 const items = []
 const itemDetails = []
 for (let i = 0; i < 1000; i++) {
@@ -28,4 +29,5 @@ for (let i = 0; i < 1000; i++) {
 
 store.commit('addItems', items)
 store.commit('addItemDetails', itemDetails)
+console.timeEnd('StoreInitData')
 export default store

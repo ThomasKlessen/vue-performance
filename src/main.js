@@ -6,12 +6,15 @@ import router from './router'
 import store from './stores'
 
 Vue.config.productionTip = false
-
+console.time('All')
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
   router,
   store,
+  mounted () {
+    console.timeEnd('All')
+  },
   components: { PerformanceTest },
   template: '<PerformanceTest/>'
 })
