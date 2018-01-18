@@ -1,5 +1,4 @@
 import Vue from 'vue'
-import config from '../config'
 
 export default {
   name: 'item',
@@ -7,7 +6,6 @@ export default {
   state: {
     items: {},
     itemList: [],
-    filterCount: config.filterCount,
     showCounter: false
   },
   mutations: {
@@ -21,19 +19,17 @@ export default {
         Vue.set(state.items, item.id, item)
       })
     },
-    setFilterCount (state, count) {
-      state.filterCount = count
-    },
     toggleShowCounter (state) {
       state.showCounter = !state.showCounter
     }
   },
   getters: {
-    getItems: state => {
+    getItems: (state, getters) => {
       let count = 0
+      let filterCount = getters.getFilterCount
       return state.itemList
         .map(itemId => state.items[itemId])
-        .filter(item => count++ <= state.filterCount)
+        .filter(item => count++ <= filterCount)
     },
     getShowCounter: state => state.showCounter
   }
