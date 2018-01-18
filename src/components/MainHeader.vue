@@ -1,12 +1,12 @@
 <template>
   <div>
     <label>Header</label>
-    <button v-on:click="clickMe"> + </button>
-    <button v-on:click="toggleShowInfo">Toolge ShowInfo</button>
+    <v-btn v-on:click="clickMe"> + </v-btn>
+    <v-btn v-on:click="toggleShowInfo">Toggle</v-btn>
     <label>{{ calcItems }}</label>
     <h2>{{ dummyText }}</h2>
-    <button v-on:click="jop">Jop</button>
-    <button v-on:click="nope">Nope</button>
+    <v-btn v-on:click="jop">Jop</v-btn>
+    <v-btn v-on:click="nope">Nope</v-btn>
   </div>
 </template>
 
