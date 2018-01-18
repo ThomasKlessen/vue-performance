@@ -1,13 +1,10 @@
 export default {
-  filterCount: 10,
-  itemCount: 100,
-  dummyCount: 100000,
+  filterCount: 500,
+  itemCount: 1000,
+  dummyCount: 100,
   VueConfig: {
-    // True: Show devTools in production mode
-    devtools: true,
-    // True: Show UserPerformance in Performance Tab
+    devtools: false,
     performance: true,
-    // True: Show production Tips
-    productionTip: true
+    productionTip: false
   }
 }

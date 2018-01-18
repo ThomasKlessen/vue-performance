@@ -6,6 +6,10 @@
     <label>{{ detail.count }}</label>
     <button v-on:click="add"> + </button>
     <button v-on:click="sub"> - </button>
+    <div v-show="showInfo">
+      {{ detail.count }}
+      <label>{{ item.name }}</label>
+    </div>
   </div>
 </template>
 
@@ -21,6 +25,9 @@ export default {
   computed: {
     detail () {
       return this.$store.getters.itemDetailsbyItemId(this.item.id)
+    },
+    showInfo () {
+      return this.$store.getters.getShowInfo
     }
   },
   methods: {

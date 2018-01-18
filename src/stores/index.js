@@ -27,7 +27,8 @@ for (let i = 0; i < config.itemCount; i++) {
     id: i,
     itemId: i,
     label: 'ItemDetail ' + i,
-    count: 0
+    count: 0,
+    test: 1
   })
 }
 

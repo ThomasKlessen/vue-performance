@@ -5,7 +5,8 @@ export default {
   namespaced: false,
   state: {
     dummys: {},
-    dummyList: []
+    dummyList: [],
+    dummyText: 'Nix'
   },
   mutations: {
     addDummys (state, dummys) {
@@ -17,10 +18,14 @@ export default {
         }
         Vue.set(state.dummys, dummy.id, dummy)
       })
+    },
+    setDummyText (state, value) {
+      state.dummyText = value
     }
   },
   getters: {
     getDummys: state => state.dummyList
-      .map(itemId => state.dummys[itemId])
+      .map(itemId => state.dummys[itemId]),
+    getDummyText: state => state.dummyText
   }
 }

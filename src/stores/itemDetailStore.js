@@ -29,6 +29,15 @@ export default {
       .map(itemDetailId => state.itemDetails[itemDetailId]),
     itemDetailsbyItemId: state => itemId => state.itemDetailList
       .map(itemDetailId => state.itemDetails[itemDetailId])
-      .find(itemDetail => itemDetail.itemId === itemId)
+      .find(itemDetail => itemDetail.itemId === itemId),
+    getCalcItems: state => state.itemDetailList
+      .reduce(
+        (sum, itemId) => {
+          sum += state.itemDetails[itemId].count
+          // state.itemDetails[itemId].test++
+          return sum
+        },
+        0
+      )
   }
 }
