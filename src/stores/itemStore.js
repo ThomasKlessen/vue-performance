@@ -8,7 +8,7 @@ export default {
     items: {},
     itemList: [],
     filterCount: config.filterCount,
-    showInfo: false
+    showCounter: false
   },
   mutations: {
     addItems (state, items) {
@@ -24,8 +24,8 @@ export default {
     setFilterCount (state, count) {
       state.filterCount = count
     },
-    toggleShowInfo (state) {
-      state.showInfo = !state.showInfo
+    toggleShowCounter (state) {
+      state.showCounter = !state.showCounter
     }
   },
   getters: {
@@ -35,6 +35,6 @@ export default {
         .map(itemId => state.items[itemId])
         .filter(item => count++ <= state.filterCount)
     },
-    getShowInfo: state => state.showInfo
+    getShowCounter: state => state.showCounter
   }
 }

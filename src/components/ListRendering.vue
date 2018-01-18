@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import Item from './item'
+import Item from './Item'
 import MainHeader from './MainHeader'
 
 export default {

@@ -1,12 +1,11 @@
 <template>
   <div>
-    <label>Header</label>
-    <button v-on:click="clickMe"> + </button>
-    <button v-on:click="toggleShowInfo">Toolge ShowInfo</button>
+    <button v-on:click="addOne"> Add 1 to all </button>
+    <button v-on:click="toggleShowCounter"> Toolge all counter </button>
     <label>{{ calcItems }}</label>
-    <h2>{{ dummyText }}</h2>
-    <button v-on:click="jop">Jop</button>
-    <button v-on:click="nope">Nope</button>
+    <br>
+    <h2>Clicked: {{ clicks }}</h2>
+    <button v-on:click="click">Simple click event</button>
   </div>
 </template>
 
@@ -17,26 +16,22 @@ export default {
     calcItems () {
       return this.$store.getters.getCalcItems
     },
-    dummyText () {
-      return this.$store.getters.getDummyText
+    clicks () {
+      return this.$store.getters.getClicks
     }
   },
   methods: {
-    clickMe () {
+    addOne () {
       console.log('Click')
       this.$store.commit('addOne')
     },
-    toggleShowInfo () {
-      console.log('toggleShowInfo')
-      this.$store.commit('toggleShowInfo')
+    toggleShowCounter () {
+      console.log('toggleShowCounter')
+      this.$store.commit('toggleShowCounter')
     },
-    jop () {
-      console.log('Jop')
-      this.$store.commit('setDummyText', 'Jop')
-    },
-    nope () {
-      console.log('Nope')
-      this.$store.commit('setDummyText', 'Nope')
+    click () {
+      console.log('Clicked')
+      this.$store.commit('addClick')
     }
   }
 }
@@ -44,7 +39,6 @@ export default {
 
 <style>
   button {
-    height: 50px;
-    width: 100px;
+    height: 30px;
   }
 </style>

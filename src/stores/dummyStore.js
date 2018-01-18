@@ -6,7 +6,7 @@ export default {
   state: {
     dummys: {},
     dummyList: [],
-    dummyText: 'Nix'
+    clicks: 0
   },
   mutations: {
     addDummys (state, dummys) {
@@ -19,13 +19,13 @@ export default {
         Vue.set(state.dummys, dummy.id, dummy)
       })
     },
-    setDummyText (state, value) {
-      state.dummyText = value
+    addClick (state) {
+      state.clicks += 1
     }
   },
   getters: {
     getDummys: state => state.dummyList
       .map(itemId => state.dummys[itemId]),
-    getDummyText: state => state.dummyText
+    getClicks: state => state.clicks
   }
 }

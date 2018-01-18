@@ -1,7 +1,7 @@
 export default {
-  filterCount: 500,
-  itemCount: 1000,
-  dummyCount: 100,
+  filterCount: 400,
+  itemCount: 5000,
+  dummyCount: 1000,
   VueConfig: {
     devtools: false,
     performance: true,

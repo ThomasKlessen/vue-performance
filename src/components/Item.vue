@@ -1,14 +1,10 @@
 <template>
   <div class="item">
     <h3>{{ item.name }}</h3>
-    <label>{{ detail.label }}</label>
-    <br/>
-    <label>{{ detail.count }}</label>
-    <button v-on:click="add"> + </button>
-    <button v-on:click="sub"> - </button>
-    <div v-show="showInfo">
-      {{ detail.count }}
-      <label>{{ item.name }}</label>
+    <div v-show="showCounter">
+      <span>Count: {{ detail.count }}</span>
+      <button v-on:click="add"> + </button>
+      <button v-on:click="sub"> - </button>
     </div>
   </div>
 </template>
@@ -26,8 +22,8 @@ export default {
     detail () {
       return this.$store.getters.itemDetailsbyItemId(this.item.id)
     },
-    showInfo () {
-      return this.$store.getters.getShowInfo
+    showCounter () {
+      return this.$store.getters.getShowCounter
     }
   },
   methods: {
@@ -43,6 +39,12 @@ export default {
 
 <style>
   .item {
-    border: 1px solid rgba(0,0,0,0.3)
+    border: 1px solid rgba(0,0,0,0.3);
+    margin: 20px;
+    padding: 10px;
+  }
+  h3 {
+    margin: 10px;
+    padding: 5px;
   }
 </style>
