@@ -1,13 +1,15 @@
 <template>
-  <div>
+  <div class="listRendering">
     <main-header></main-header>
-    <ul>
-      <item
-        v-for="item in items"
-        :item="item"
-        :key="item.id"
-      ></item>
-    </ul>
+    <div>
+      <ul>
+        <item
+          v-for="item in items"
+          :item="item"
+          :key="item.id"
+        ></item>
+      </ul>
+    </div>
   </div>
 </template>
 
@@ -39,5 +41,18 @@ export default {
   ul {
     margin: 0;
     padding: 0;
+  }
+  .listRendering {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+  }
+  .listRendering > div {
+    flex: 1;
+  }
+  .listRendering > div:nth-child(2) {
+    flex: 0;
+    height: calc(100% - 200px);
+    overflow: auto;
   }
 </style>

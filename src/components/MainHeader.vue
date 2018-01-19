@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="mainHeader">
     <div class="generateData">
       <div>
         <label>ItemCount:</label>
@@ -103,6 +103,9 @@ export default {
 </script>
 
 <style>
+  .mainHeader {
+    height: 180px;
+  }
   button {
     min-height: 30px;
   }
