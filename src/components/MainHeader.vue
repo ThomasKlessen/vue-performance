@@ -31,6 +31,8 @@
 </template>
 
 <script>
+import Vue from 'vue'
+
 export default {
   name: 'main-header',
   computed: {
@@ -57,10 +59,25 @@ export default {
     addOne () {
       console.log('Click')
       this.$store.commit('addOne')
+      Vue.nextTick()
+        .then(() => {
+          console.log('Done?')
+        })
     },
     toggleShowCounter () {
       console.log('toggleShowCounter')
-      this.$store.commit('toggleShowCounter')
+      const store = this.$store
+      console.log('Prepare for heavy stuff')
+      store.commit('setShowFader', true)
+      setTimeout(() => {
+        console.log('Start heavy stuff')
+        store.commit('toggleShowCounter')
+        Vue.nextTick()
+          .then(() => {
+            console.log('Done with heavy stuff')
+            store.commit('setShowFader', false)
+          })
+      }, 50)
     },
     click () {
       console.log('Clicked')

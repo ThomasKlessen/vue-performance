@@ -33,6 +33,13 @@ export default {
     sub () {
       this.detail.count--
     }
+  },
+  beforeUpdate () {
+    // console.log('beforeUpdate')
+    // console.time(this.item.id)
+  },
+  updated () {
+    // console.timeEnd(this.item.id)
   }
 }
 </script>
