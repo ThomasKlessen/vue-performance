@@ -66,11 +66,9 @@ export default {
       this.$store.commit('setMaxSubItems', parseInt(this.maxSubItems))
     },
     add () {
-      console.log('add')
       this.$store.commit('inc')
     },
     sub () {
-      console.log('sub')
       this.$store.commit('dec')
     },
     click () {
