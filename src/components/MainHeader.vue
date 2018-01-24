@@ -6,8 +6,8 @@
         <input v-model="itemCount"/>
       </div>
       <div>
-        <label>DummyCount:</label>
-        <input v-model="dummyCount"/>
+        <label>SubItemCount:</label>
+        <input v-model="subItemCount"/>
       </div>
       <div>
         <button v-on:click="generateData">Create Data</button>
@@ -15,15 +15,20 @@
     </div>
     <div class="itemActions">
       <div>
-        <label>FilterCount:</label>
-        <input v-model="filterCount"/>
+        <label>Max Items:</label>
+        <input v-model="maxItems"/>
       </div>
       <div>
-        <button v-on:click="addOne"> Add 1 to all </button>
-        <button v-on:click="toggleShowCounter"> Toolge all counter </button>
+        <label>Max SubItems:</label>
+        <input v-model="maxSubItems"/>
       </div>
+      <button v-on:click="setMax"> Set Maximum </button>
+    </div>
+    <div class="itemActions">
       <div>
-        <label>{{ calcItems }}</label>
+        <label> Summe: {{ getSum }}</label>
+        <button v-on:click="add"> + </button>
+        <button v-on:click="sub"> - </button>
       </div>
     </div>
     <button class="fullsize" v-on:click="click">Clicked: {{ clicks }}</button>
@@ -33,44 +38,50 @@
 <script>
 export default {
   name: 'main-header',
+  data () {
+    return {
+      maxItems: this.$store.getters.getMaxItems,
+      maxSubItems: this.$store.getters.getMaxSubItems
+    }
+  },
   computed: {
-    calcItems () {
-      return this.$store.getters.getCalcItems
+    getSum () {
+      return this.$store.getters.getSum
     },
     clicks () {
       return this.$store.getters.getClicks
-    },
-    filterCount: {
-      get () { return this.$store.getters.getFilterCount },
-      set (value) { this.$store.commit('setFilterCount', value) }
     },
     itemCount: {
       get () { return this.$store.getters.getItemCount },
       set (value) { this.$store.commit('setItemCount', value) }
     },
-    dummyCount: {
-      get () { return this.$store.getters.getDummyCount },
-      set (value) { this.$store.commit('setDummyCount', value) }
+    subItemCount: {
+      get () { return this.$store.getters.getSubItemCount },
+      set (value) { this.$store.commit('setSubItemCount', value) }
     }
   },
   methods: {
-    addOne () {
-      console.log('Click')
-      this.$store.commit('addOne')
+    setMax () {
+      this.$store.commit('setMaxItems', parseInt(this.maxItems))
+      this.$store.commit('setMaxSubItems', parseInt(this.maxSubItems))
     },
-    toggleShowCounter () {
-      console.log('toggleShowCounter')
-      this.$store.commit('toggleShowCounter')
+    add () {
+      console.log('add')
+      this.$store.commit('inc')
+    },
+    sub () {
+      console.log('sub')
+      this.$store.commit('dec')
     },
     click () {
       console.log('Clicked')
       this.$store.commit('addClick')
     },
     generateData () {
-      console.log(this.filterCount)
       console.time('CreateData')
       const items = []
       const itemDetails = []
+      const subItems = []
       for (let i = 0; i < this.itemCount; i++) {
         items.push({
           id: i,
@@ -83,19 +94,18 @@ export default {
           count: 0,
           test: 1
         })
+        for (let j = 0; j < this.subItemCount; j++) {
+          subItems.push({
+            id: i * parseInt(this.subItemCount) + j,
+            itemId: i,
+            name: i * parseInt(this.subItemCount) + j,
+            count: 0
+          })
+        }
       }
-
-      const dummyItems = []
-      for (let i = 0; i < this.dummyCount; i++) {
-        dummyItems.push({
-          id: i,
-          label: 'Dummy ' + i
-        })
-      }
-
       this.$store.commit('addItems', items)
       this.$store.commit('addItemDetails', itemDetails)
-      this.$store.commit('addDummys', dummyItems)
+      this.$store.commit('setSubItems', subItems)
       console.timeEnd('CreateData')
     }
   }
@@ -115,7 +125,7 @@ export default {
   }
   .generateData > div,
   .itemActions > div {
-    padding: 20px;
+    padding: 10px;
   }
   .fullsize {
     width: 100%;

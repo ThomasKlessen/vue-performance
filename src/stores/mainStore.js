@@ -2,24 +2,34 @@ export default {
   name: 'main',
   namespaced: false,
   state: {
-    filterCount: 100,
-    itemCount: 1000,
-    dummyCount: 10000
+    maxItems: 20,
+    maxSubItems: 20,
+    itemCount: 100,
+    subItemCount: 50,
+    clicks: 0
   },
   mutations: {
-    setFilterCount (state, value) {
-      state.filterCount = value
-    },
     setItemCount (state, value) {
       state.itemCount = value
     },
-    setDummyCount (state, value) {
-      state.dummyCount = value
+    setSubItemCount (state, value) {
+      state.subItemCount = value
+    },
+    setMaxItems (state, value) {
+      state.maxItems = value
+    },
+    setMaxSubItems (state, value) {
+      state.maxSubItems = value
+    },
+    addClick (state) {
+      state.clicks++
     }
   },
   getters: {
-    getFilterCount: state => state.filterCount,
     getItemCount: state => state.itemCount,
-    getDummyCount: state => state.dummyCount
+    getSubItemCount: state => state.subItemCount,
+    getMaxItems: state => state.maxItems,
+    getMaxSubItems: state => state.maxSubItems,
+    getClicks: state => state.clicks
   }
 }

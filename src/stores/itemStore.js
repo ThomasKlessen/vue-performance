@@ -5,8 +5,7 @@ export default {
   namespaced: false,
   state: {
     items: {},
-    itemList: [],
-    showCounter: false
+    itemList: []
   },
   mutations: {
     addItems (state, items) {
@@ -18,19 +17,15 @@ export default {
         }
         Vue.set(state.items, item.id, item)
       })
-    },
-    toggleShowCounter (state) {
-      state.showCounter = !state.showCounter
     }
   },
   getters: {
     getItems: (state, getters) => {
       let count = 0
-      let filterCount = getters.getFilterCount
+      const maxItems = getters.getMaxItems
       return state.itemList
         .map(itemId => state.items[itemId])
-        .filter(item => count++ <= filterCount)
-    },
-    getShowCounter: state => state.showCounter
+        .filter(item => ++count <= maxItems)
+    }
   }
 }

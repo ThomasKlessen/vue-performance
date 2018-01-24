@@ -4,7 +4,8 @@ import Vuex from 'vuex'
 import main from './mainStore'
 import item from './itemStore'
 import itemDetail from './itemDetailStore'
-import dummy from './dummyStore'
+import subItem from './subItemStore'
+
 Vue.use(Vuex)
 
 const store = new Vuex.Store({
@@ -12,7 +13,7 @@ const store = new Vuex.Store({
     main,
     item,
     itemDetail,
-    dummy
+    subItem
   }
 })
 
