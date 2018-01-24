@@ -1,12 +1,23 @@
 <template>
   <div id="app">
+    <fader v-show="showFader"></fader>
     <router-view/>
   </div>
 </template>
 
 <script>
+import Fader from './components/Fader.vue'
+
 export default {
-  name: 'PerformanceTest'
+  components: {
+    Fader
+  },
+  name: 'PerformanceTest',
+  computed: {
+    showFader () {
+      return this.$store.getters.getShowFader
+    }
+  }
 }
 </script>
 

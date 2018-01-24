@@ -31,6 +31,12 @@ export default {
   beforeCreate () {
     console.time('init_all')
   },
+  beforeUpdate () {
+    console.log('before')
+  },
+  updated () {
+    console.log('after')
+  },
   mounted () {
     console.timeEnd('init_all')
   }
