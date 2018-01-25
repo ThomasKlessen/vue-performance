@@ -56,13 +56,14 @@ export default {
         .filter(subItem => (subItem.itemId === itemId && ++count <= maxSubItems))
     },
     getSubItemById: state => subItemId => state.subItems[subItemId],
-    getSumByItemId: state => itemId => state.subItemList
+    getSumByItemId: state => itemId => 0, /* state.subItemList
       .reduce((sum, id) => {
         return state.subItems[id].itemId === itemId
           ? sum + state.subItems[id].count
           : sum
-      }, 0),
-    getSum: state => state.subItemList
-      .reduce((sum, id) => sum + state.subItems[id].count, 0)
+      }, 0), */
+    getSum: state => 0
+    /* state.subItemList
+      .reduce((sum, id) => sum + state.subItems[id].count, 0) */
   }
 }
